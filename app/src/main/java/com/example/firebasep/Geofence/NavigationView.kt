@@ -51,7 +51,7 @@ class NavigationView : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapL
     private lateinit var geofencingClient: GeofencingClient
     private lateinit var locationManager: LocationManager
     private val locationCode = 2000
-    private val GEOFENCE_RADIUS = 200
+    private val GEOFENCE_RADIUS = 700
     private lateinit var geofenceHelper: GeofenceHelper
     private val GEOFENCE_ID = "WPI"
 
@@ -64,7 +64,7 @@ class NavigationView : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapL
 
     private val kaven_parking = LatLng(42.274501550567145, -71.80565160178023)
     private val west_parking = LatLng(42.272439542070096, -71.80844729578487)
-    private val location1_title = "Kaven Parking"
+    private val location1_title = "Unity Hall Parking"
     private val location2_title = "West Parking"
     private val apiKey = "AIzaSyASTPC3X_oKy-jnwZQtp5aA_7jHRMPDYx4" //NE
 
@@ -90,7 +90,7 @@ class NavigationView : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapL
 
         mapFragment.getMapAsync {
             mMap = it
-            mMap.clear()
+//            mMap.clear()
             val destinationLocation1 = kaven_parking
             val marker = mMap.addMarker(MarkerOptions().position(destinationLocation1).title(location1_title))
             marker?.showInfoWindow()
@@ -108,7 +108,7 @@ class NavigationView : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapL
         val geofence_address = around_wpi
         addCircle(geofence_address, GEOFENCE_RADIUS)
         getmylocation()
-        addGeofence(around_wpi, GEOFENCE_RADIUS, GEOFENCE_ID)
+//        addGeofence(around_wpi, GEOFENCE_RADIUS, GEOFENCE_ID)
 
         //NE
         if (ActivityCompat.checkSelfPermission(
@@ -292,7 +292,7 @@ class NavigationView : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapL
         mMap.clear()
         addMarker(latLng)
         addCircle(latLng, GEOFENCE_RADIUS)
-        addGeofence(latLng, GEOFENCE_RADIUS, GEOFENCE_ID)
+//        addGeofence(latLng, GEOFENCE_RADIUS, GEOFENCE_ID)
 
     }
 
