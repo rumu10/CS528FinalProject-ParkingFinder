@@ -10,8 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firebasep.DataModels.ParkingSpotsModel
 import android.graphics.Color
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.GridLayout
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 
 class DisplayParkingActivity : AppCompatActivity() {
 
@@ -68,43 +73,84 @@ class DisplayParkingActivity : AppCompatActivity() {
 
                 val linearLayout: GridLayout = findViewById(R.id.gridLayoutForButtons)
 
+                val gridLayout: GridLayout = findViewById(R.id.gridLayoutForButtons)
+                gridLayout.removeAllViews() // Clear existing views
+
+
                 var currentColumn = 0
                 var currentRow = 0
 
                 parkingList.forEach { parking ->
+//                    val button = Button(this@DisplayParkingActivity).apply {
+//                        text = parking.pId
+//                        setBackgroundColor(if (parking.Paval.equals("available", ignoreCase = true)) Color.GREEN else Color.RED)
+//                        layoutParams = GridLayout.LayoutParams().apply {
+//                            columnSpec = GridLayout.spec(currentColumn)
+//                            rowSpec = GridLayout.spec(currentRow)
+//                            width = GridLayout.LayoutParams.WRAP_CONTENT
+//                            height = GridLayout.LayoutParams.WRAP_CONTENT
+//                            setMargins(8, 8, 8, 8)
+//                        }
+//                        setOnClickListener {
+//                            if (parking.Paval == "available") {
+//                                println("available")
+//                                // Perform actions for available parking
+////                                text = "Coords: (${parking.pId} : ${parking.plong}, ${parking.plat})"
+////                                linearLayout.visibility = View.GONE
+//////
+////                                val transaction = supportFragmentManager.beginTransaction()
+////                                transaction.replace(R.id.map, MapFragment())
+////                                transaction.addToBackStack(null)
+//
+//                                val intent = Intent(this@DisplayParkingActivity, NavigationView::class.java)
+//                                intent.putExtra("parkingId", parking.pId)
+//                                startActivity(intent)
+//                            } else {
+//
+//                                Toast.makeText(this@DisplayParkingActivity, "This location is already occupied", Toast.LENGTH_SHORT).show()
+//                            }
+//                        }
+//
+//                        }
+//
+//
+//
+//                    linearLayout.addView(button)
+//                    currentColumn++
+//                    if (currentColumn == 4) {
+//                        currentColumn = 0
+//                        currentRow++
+//                    }
+
+
                     val button = Button(this@DisplayParkingActivity).apply {
                         text = parking.pId
-                        setBackgroundColor(if (parking.Paval.equals("available", ignoreCase = true)) Color.GREEN else Color.RED)
                         layoutParams = GridLayout.LayoutParams().apply {
-                            columnSpec = GridLayout.spec(currentColumn)
-                            rowSpec = GridLayout.spec(currentRow)
+//                            columnSpec = GridLayout.spec(currentColumn)  // Set column index and span
+//                            rowSpec = GridLayout.spec(currentRow)
                             width = GridLayout.LayoutParams.WRAP_CONTENT
                             height = GridLayout.LayoutParams.WRAP_CONTENT
-                            setMargins(8, 8, 8, 8)
+                            setMargins(150, 10, 10, 10)
                         }
+                        // Set background image based on availability
+                        background = ContextCompat.getDrawable(
+                            this@DisplayParkingActivity,
+                            if (parking.Paval.equals("available", ignoreCase = true)) R.drawable.more else R.drawable.car_image
+                        )
                         setOnClickListener {
                             if (parking.Paval == "available") {
-                                println("available")
-                                // Perform actions for available parking
-//                                text = "Coords: (${parking.pId} : ${parking.plong}, ${parking.plat})"
-//                                linearLayout.visibility = View.GONE
-////
-//                                val transaction = supportFragmentManager.beginTransaction()
-//                                transaction.replace(R.id.map, MapFragment())
-//                                transaction.addToBackStack(null)
-
                                 val intent = Intent(this@DisplayParkingActivity, NavigationView::class.java)
                                 intent.putExtra("parkingId", parking.pId)
                                 startActivity(intent)
                             } else {
-
-                                Toast.makeText(this@DisplayParkingActivity, "This location is already occupied", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    this@DisplayParkingActivity,
+                                    "This location is already occupied",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
                         }
-
-                        }
-
-
+                    }
 
                     linearLayout.addView(button)
                     currentColumn++
@@ -112,6 +158,7 @@ class DisplayParkingActivity : AppCompatActivity() {
                         currentColumn = 0
                         currentRow++
                     }
+
                 }
 
             }
