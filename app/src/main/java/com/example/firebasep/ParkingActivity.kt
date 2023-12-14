@@ -17,16 +17,16 @@ class ParkingActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Initialize with a default fragment, such as a home fragment
-        replaceFragment(HomeFragment())
+        replaceFragment(ParkingFragment())
 
         // Assuming you have a BottomNavigationView in your parking app as well
         binding.bottomNavigationView.apply {
             setBackground(null)
             setOnItemSelectedListener { item ->
                 when (item.itemId) {
-                    R.id.home -> replaceFragment(HomeFragment())
                     R.id.myparking -> replaceFragment(ParkingFragment())
-                    R.id.subscriptions -> replaceFragment(MapFragment())
+                    R.id.home -> replaceFragment(HomeFragment())
+                    R.id.subscriptions -> replaceFragment(UserProfileFragment())
                     R.id.more -> replaceFragment(MoreFragment())
                 }
                 true
