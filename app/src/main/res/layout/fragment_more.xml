@@ -35,11 +35,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="serif"
-                android:text="Reza SaadatiFard, rsaadatifard@wpi.edu\nMaryam Ataei, mataei@wpi.edu\nSudipta Biswas, sbiswas@wpi.edu\nAnushka Bangal, aBangal@wpi.edu\nMehrnoush Alizade, malizade@wpi.edu"
+                android:text="Reza SaadatiFard, rsaadatifard@wpi.edu\n\nMaryam Ataei, mataei@wpi.edu\n\nSudipta Biswas, sbiswas@wpi.edu\n\nAnushka Bangal, aBangal@wpi.edu\n\nMehrnoush Alizade, malizade@wpi.edu"
                 android:textColor="@color/black"
-                android:textSize="30sp"
-                android:gravity="center"
-                android:textStyle="bold"/>
+                android:textSize="20sp"
+                android:gravity="center" />
 
 
 
