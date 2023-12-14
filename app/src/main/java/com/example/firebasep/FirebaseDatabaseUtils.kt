@@ -4,9 +4,10 @@ import com.google.firebase.database.FirebaseDatabase
 
 fun updateFirebaseDatabase(parkingSpots: List<ParkingSpotsModel>) {
     val database = FirebaseDatabase.getInstance()
-    val ref = database.getReference("parkingSpots")
+    val ref = database.getReference("parkingSlotUnity")
 
     parkingSpots.forEach { spot ->
-        ref.child(spot.pId).setValue(spot)
+        print("spot"+ spot)
+        ref.child(spot.PID).setValue(spot)
     }
 }

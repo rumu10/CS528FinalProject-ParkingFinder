@@ -24,12 +24,12 @@ class ParkingAdapter(private val parkingList: List<ParkingSpotsModel>) : Recycle
 
     override fun onBindViewHolder(holder: ParkingViewHolder, position: Int) {
         val currentParking = parkingList[position]
-        holder.tvPId.text = currentParking.pId
-        holder.tvPaval.text = currentParking.Paval
-        holder.tvplong.text = currentParking.plong.toString()
-        holder.tvplat.text = currentParking.plat.toString()
+        holder.tvPId.text = currentParking.PID
+        holder.tvPaval.text = currentParking.status.toString()
+        holder.tvplong.text = currentParking.longitude.toString()
+        holder.tvplat.text = currentParking.latitude.toString()
         Log.e("reach to adapter ", "Addapter ")
-        Log.e("ParkingAdapter", "PID: ${currentParking.pId}, Pavalaibity: ${currentParking.Paval}")
+        Log.e("ParkingAdapter", "PID: ${currentParking.PID}, Pavalaibity: ${currentParking.status}")
     }
 
     override fun getItemCount() = parkingList.size

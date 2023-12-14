@@ -54,7 +54,7 @@
         android:id="@+id/gridLayoutForButtons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:columnCount="2"
+        android:columnCount="4"
         android:orientation="horizontal"
         android:paddingTop="100dp"
         >

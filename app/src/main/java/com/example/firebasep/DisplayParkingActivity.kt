@@ -9,13 +9,7 @@ import com.google.firebase.database.*
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firebasep.DataModels.ParkingSpotsModel
-import android.graphics.Color
-import android.view.LayoutInflater
-import android.view.View
 import android.widget.GridLayout
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 
 class DisplayParkingActivity : AppCompatActivity() {
@@ -29,25 +23,22 @@ class DisplayParkingActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_display_parking)
-        Log.e("ccc INsidee Fetch data", "Inside FtechData")
 
         recyclerView = findViewById(R.id.recyclerViewParkings)
         recyclerView.layoutManager = LinearLayoutManager(this)
         ParkingAdapter = ParkingAdapter(parkingList)
         recyclerView.adapter = ParkingAdapter
 
-        // Fetch data from Firebase
-        Log.e("bbb INsidee Fetch data", "Inside FtechData")
         fetchDataFromFirebase()
 
     }
     private fun fetchDataFromFirebase() {
         Log.e("INsidee Fetch data", "Inside FtechData")
-        val databaseReference = FirebaseDatabase.getInstance().getReference("parkingSpots")
-
+        val databaseReference = FirebaseDatabase.getInstance().getReference("parkingSlotUnity")
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 Log.e("DataSnapSHOTTT", "Reading Data from ")
+
                 if (!dataSnapshot.exists()) {
                     Log.e("FirebaseConnection", "No data found in the database.")
                     return
@@ -56,19 +47,25 @@ class DisplayParkingActivity : AppCompatActivity() {
                 Log.d("FirebaseConnection", "Successfully connected to Firebase database.")
 
                 parkingList.clear()
+
+
                 for (ParkingSnapshot in dataSnapshot.children) {
-                    val PId = ParkingSnapshot.child("pid").getValue(String::class.java) ?: ""
-                    val Paval = ParkingSnapshot.child("paval").getValue(String::class.java) ?: ""
-                    val plong = ParkingSnapshot.child("plong").getValue(Double::class.java) ?: 0.0
-                    val plat = ParkingSnapshot.child("plat").getValue(Double::class.java) ?: 0.0
-                   // Log.d("FirebaseData", "Snapshot Key: ${parkingSnapshot.key}, Value: ${parkingSnapshot.value}")
+                    if(ParkingSnapshot.key == "Total") {
+                        Log.d("checkingggg", "Snapshot Key: ${ParkingSnapshot.key}, Value: ${ParkingSnapshot.value}")
 
-                    val parking = ParkingSpotsModel(PId, Paval, plong, plat)
-                    parkingList.add(parking)
-                    Log.d("ParkingModelData", "Created ParkingModel - PID: $PId, availabity: $Paval, longtitude: Plong, lattitude: Plat")
+                    } else {
+                        val PID = ParkingSnapshot.key ?: "" // Get the key (PID)
+                        val Paval = ParkingSnapshot.child("status").getValue(Int::class.java) ?: 0
+                        val plong = ParkingSnapshot.child("latitude").getValue(Double::class.java) ?: 0.0
+                        val plat = ParkingSnapshot.child("longitude").getValue(Double::class.java) ?: 0.0
+                        val ev = ParkingSnapshot.child("EV").getValue(Int::class.java) ?: 0
+                        val hc = ParkingSnapshot.child("Handicapped").getValue(Int::class.java) ?: 0
 
 
-                    Log.e("Now read the data in fun ...", "Reading22 Data from ")
+                        val parking = ParkingSpotsModel(PID, Paval, plong, plat, ev , hc)
+                        parkingList.add(parking)
+                    }
+
                 }
 
                 val linearLayout: GridLayout = findViewById(R.id.gridLayoutForButtons)
@@ -80,67 +77,38 @@ class DisplayParkingActivity : AppCompatActivity() {
                 var currentColumn = 0
                 var currentRow = 0
 
+                val buttonGroups = mutableMapOf<Char, MutableList<Button>>()
+
                 parkingList.forEach { parking ->
-//                    val button = Button(this@DisplayParkingActivity).apply {
-//                        text = parking.pId
-//                        setBackgroundColor(if (parking.Paval.equals("available", ignoreCase = true)) Color.GREEN else Color.RED)
-//                        layoutParams = GridLayout.LayoutParams().apply {
-//                            columnSpec = GridLayout.spec(currentColumn)
-//                            rowSpec = GridLayout.spec(currentRow)
-//                            width = GridLayout.LayoutParams.WRAP_CONTENT
-//                            height = GridLayout.LayoutParams.WRAP_CONTENT
-//                            setMargins(8, 8, 8, 8)
-//                        }
-//                        setOnClickListener {
-//                            if (parking.Paval == "available") {
-//                                println("available")
-//                                // Perform actions for available parking
-////                                text = "Coords: (${parking.pId} : ${parking.plong}, ${parking.plat})"
-////                                linearLayout.visibility = View.GONE
-//////
-////                                val transaction = supportFragmentManager.beginTransaction()
-////                                transaction.replace(R.id.map, MapFragment())
-////                                transaction.addToBackStack(null)
-//
-//                                val intent = Intent(this@DisplayParkingActivity, NavigationView::class.java)
-//                                intent.putExtra("parkingId", parking.pId)
-//                                startActivity(intent)
-//                            } else {
-//
-//                                Toast.makeText(this@DisplayParkingActivity, "This location is already occupied", Toast.LENGTH_SHORT).show()
-//                            }
-//                        }
-//
-//                        }
-//
-//
-//
-//                    linearLayout.addView(button)
-//                    currentColumn++
-//                    if (currentColumn == 4) {
-//                        currentColumn = 0
-//                        currentRow++
-//                    }
-
-
                     val button = Button(this@DisplayParkingActivity).apply {
-                        text = parking.pId
+                        text = parking.PID
+
                         layoutParams = GridLayout.LayoutParams().apply {
 //                            columnSpec = GridLayout.spec(currentColumn)  // Set column index and span
 //                            rowSpec = GridLayout.spec(currentRow)
-                            width = GridLayout.LayoutParams.WRAP_CONTENT
-                            height = GridLayout.LayoutParams.WRAP_CONTENT
-                            setMargins(150, 10, 10, 10)
+                            width = 230 // You can replace this with the desired width
+                            height = 100 // You can replace this with the desired height
+                            setMargins(25, 1, 8, 8)
+//
+                        }
+
+                        setTextColor(ContextCompat.getColor(this@DisplayParkingActivity, R.color.black))
+
+                        val backgroundDrawable = when {
+                            parking.status == 1 && parking.handicapped == 1 -> R.drawable.ic_handicap
+                            parking.status == 1 && parking.EV == 1 -> R.drawable.ev1
+                            parking.status == 1 -> R.drawable.more
+                            else -> R.drawable.car_image
                         }
                         // Set background image based on availability
                         background = ContextCompat.getDrawable(
                             this@DisplayParkingActivity,
-                            if (parking.Paval.equals("available", ignoreCase = true)) R.drawable.more else R.drawable.car_image
+                           backgroundDrawable
                         )
                         setOnClickListener {
-                            if (parking.Paval == "available") {
+                            if (parking.status.toString() == "1") {
                                 val intent = Intent(this@DisplayParkingActivity, NavigationView::class.java)
-                                intent.putExtra("parkingId", parking.pId)
+                                intent.putExtra("parkingId", parking.PID)
                                 startActivity(intent)
                             } else {
                                 Toast.makeText(
@@ -152,14 +120,28 @@ class DisplayParkingActivity : AppCompatActivity() {
                         }
                     }
 
-                    linearLayout.addView(button)
-                    currentColumn++
-                    if (currentColumn == 4) {
-                        currentColumn = 0
-                        currentRow++
-                    }
+                    val group = parking.PID[0].toUpperCase()
+                    buttonGroups.getOrPut(group) { mutableListOf() }.add(button)
+
+
+//                    linearLayout.addView(button)
+//                    currentColumn++
+//                    if (currentColumn == 4) {
+//                        currentColumn = 0
+//                        currentRow++
+//                    }
 
                 }
+
+                val groupsOrder = listOf('D', 'C', 'B', 'A')
+                for (group in groupsOrder) {
+                    val buttonsInGroup = buttonGroups[group] ?: continue
+                    buttonsInGroup.forEach { button ->
+                        linearLayout.addView(button)
+                    }
+                }
+
+
 
             }
 
@@ -172,6 +154,7 @@ class DisplayParkingActivity : AppCompatActivity() {
                 Log.e("DisplayParkingActivity", "Database error", databaseError.toException())
             }
         })
+
     }
 }
 

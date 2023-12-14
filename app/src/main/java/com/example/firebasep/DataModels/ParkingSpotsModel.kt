@@ -1,10 +1,12 @@
 package com.example.firebasep.DataModels
 
-data class ParkingSpotsModel (
-    var pId: String,
-    var Paval: String,
-    var plong: Double,
-    var plat: Double
+data class ParkingSpotsModel(
+    var PID: String,
+    var status: Int,
+    var latitude: Double,
+    var longitude: Double,
+    var EV: Int,
+    var handicapped: Int
 )
 
 
@@ -14,8 +16,9 @@ fun validateData(parkingSpots: List<ParkingSpotsModel>): Boolean {
 
     // Further validation: check each parking spot for required fields
     return parkingSpots.all { spot ->
-        spot.pId.isNotEmpty() &&
-                spot.Paval.isNotEmpty()
+        spot.status in 0..1 &&
+                spot.handicapped in 0..1 &&
+                spot.EV in 0..1
 
     }
 }

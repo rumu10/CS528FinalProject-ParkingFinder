@@ -18,9 +18,18 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.graphics.Color
 import android.os.Build
+import android.widget.Button
+import android.widget.GridLayout
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
+import com.example.firebasep.DataModels.ParkingSpotsModel
 import com.example.firebasep.MainActivity
+import com.example.firebasep.NavigationView
 import com.example.firebasep.R
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class GeofenceBroadcastReceiver : BroadcastReceiver() {
 
@@ -43,6 +52,8 @@ class GeofenceBroadcastReceiver : BroadcastReceiver() {
         if (geofencingEvent.geofenceTransition == Geofence.GEOFENCE_TRANSITION_ENTER) {
             Toast.makeText(context?.applicationContext, "Enter Geofence", Toast.LENGTH_SHORT).show()
 
+            val numOfParking = fetchDataFromFirebase()
+
             val notificationManager = context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
             val notificationIntent = Intent(context, MainActivity::class.java)
@@ -51,7 +62,7 @@ class GeofenceBroadcastReceiver : BroadcastReceiver() {
             val notification = NotificationCompat.Builder(context, channelId)
                 .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentTitle("Geofence Alert")
-                .setContentText("You're around the WPI")
+                .setContentText("You're around the WPI and ${numOfParking} parkings are available in UnityHall parking")
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
                 .setOngoing(true) // Set the notification as ongoing
@@ -69,6 +80,39 @@ class GeofenceBroadcastReceiver : BroadcastReceiver() {
             notificationManager.notify(1234, notification)
         }
     }
+
+    private fun fetchDataFromFirebase(): Int {
+        Log.e("INsidee Fetch data", "Inside FtechData")
+        val databaseReference = FirebaseDatabase.getInstance().getReference("parkingSlotUnity")
+        var numOfParking: Int = 0
+
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (!dataSnapshot.exists()) {
+                    Log.e("FirebaseConnection", "No data found in the database.")
+                    return
+                }
+
+                for (ParkingSnapshot in dataSnapshot.children) {
+                    if(ParkingSnapshot.key == "Total") {
+                        val numberValue = (ParkingSnapshot.value as? Map<*, *>)?.get("number") as? Long
+                        numOfParking = numberValue?.toInt() ?: 0
+
+                    }
+
+                }
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.e("geofence", "Database error", databaseError.toException())
+            }
+        })
+
+        return numOfParking
+    }
+
+
 }
 
 
