@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="serif"
-                android:text="Reza SaadatiFard,\n Rsaadatifard@wpi.edu\n\n\nMaryam Ataei,\n Mataeikachoei@wpi.edu\n\nSudipta Biswas,\n Sbiswas@wpi.edu\n\n\nAnushka Bangal,\n Abangal@wpi.edu\n\n\nMehrnoush Alizade,\n malizade@wpi.edu"
+                android:text="Reza SaadatiFard,\n Rsaadatifard@wpi.edu\n\n\nMaryam Ataei,\n Mataeikachoei@wpi.edu\n\nSudipta Biswas,\n Sbiswas@wpi.edu\n\n\nAnushka Bangal,\n Abangal@wpi.edu\n\n\nMehrnoush Alizade,\n Malizade@wpi.edu"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:gravity="center" />
