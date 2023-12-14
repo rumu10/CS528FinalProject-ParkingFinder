@@ -113,44 +113,6 @@ class GeofenceBroadcastReceiver : BroadcastReceiver() {
             }
         })
     }
-
-
-
-//    private fun fetchDataFromFirebase(): Int {
-//        Log.e("INsidee Fetch data", "Inside FtechData")
-//        val databaseReference = FirebaseDatabase.getInstance().getReference("parkingSlotUnity")
-//        var numOfParking: Int = 0
-//
-//        databaseReference.addValueEventListener(object : ValueEventListener {
-//            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                if (!dataSnapshot.exists()) {
-//                    Log.e("FirebaseConnection", "No data found in the database.")
-//                    return
-//                }
-//
-//                for (ParkingSnapshot in dataSnapshot.children) {
-//                    if(ParkingSnapshot.key == "Total") {
-//                        val numberValue = (ParkingSnapshot.value as? Map<*, *>)?.get("number") as? Long
-//                        Log.d("FirebaseConnection", "total: $numberValue ")
-//                        Log.d("MainActivity", "FRom MainActy sending User_Email: $numberValue")
-//
-//                        numOfParking = numberValue?.toInt() ?: 0
-//
-//                    }
-//
-//                }
-//
-//            }
-//
-//            override fun onCancelled(databaseError: DatabaseError) {
-//                Log.e("geofence", "Database error", databaseError.toException())
-//            }
-//        })
-//
-//        return numOfParking
-//    }
-
-
 }
 
 
