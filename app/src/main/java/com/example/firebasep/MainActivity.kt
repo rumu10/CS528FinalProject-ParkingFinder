@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textPassword: EditText
     private lateinit var btnFetchData: Button
     private lateinit var btnInserData: Button
-    private lateinit var btnManagementUser: Button
+    //private lateinit var btnManagementUser: Button
 
 
     //geofence
@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
     private val locationCode = 2000
 //    private val GEOFENCE_RADIUS = 500
     private lateinit var geofenceHelper: GeofenceHelper
+
 //    private val GEOFENCE_ID = "WPI"
     //NE
     // Define your destination locations globally if they are fixed and reused
@@ -60,26 +61,36 @@ class MainActivity : AppCompatActivity() {
         textPassword = findViewById(R.id.textPassword)
         btnFetchData = findViewById(R.id.btnFetchData)
         btnInserData = findViewById(R.id.btnInsertData)
-        btnManagementUser = findViewById(R.id.btnManagementUsers)
+       // btnManagementUser = findViewById(R.id.btnManagementUsers)
+
 
         btnFetchData.setOnClickListener {
+            val userEmail = textEmail.text.toString().trim()
+            Log.d("MainActivity22", "FRom MainActy sending User_Email: $userEmail")
             if (validateUsername() && validatePassword()) {
-                checkUser(object : LoginSuccessCallback {
-                    override fun onLoginSuccess() {
+
+              //  checkUser(object : LoginSuccessCallback {
+
+                 //   override fun onLoginSuccess() {
+                        Log.d("MainActivity33", "FRom MainActy sending User_Email: $userEmail")
                         // This is called if login is successful
                         Toast.makeText(applicationContext, "Login successful!", Toast.LENGTH_SHORT).show()
 
                         val intent = Intent(this@MainActivity , ParkingActivity::class.java)
+                        val userEmail = textEmail.text.toString().trim()
+                        Log.d("MainActivity", "FRom MainActy sending User_Email: $userEmail")
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        intent.putExtra("USER_EMAIL", userEmail)
+
                         startActivity(intent)
 
-                    }
+                  //  }
 
-                    override fun onLoginFailure(message: String) {
+                  //  override fun onLoginFailure(message: String) {
                         // This is called if login fails
-                        Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
-                    }
-                })
+                  //      Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                  //  }
+               // })
             }
         }
 
@@ -89,10 +100,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btnManagementUser.setOnClickListener {
-            val intent = Intent(this@MainActivity, DisplayUsersActivity::class.java)
-            startActivity(intent)
-        }
+//        btnManagementUser.setOnClickListener {
+//            val intent = Intent(this@MainActivity, DisplayUsersActivity::class.java)
+//            startActivity(intent)
+//        }
 
         geofencingClient = LocationServices.getGeofencingClient(this)
         geofenceHelper = GeofenceHelper(this)
@@ -139,7 +150,7 @@ class MainActivity : AppCompatActivity() {
         val userPassword = textPassword.text.toString().trim()
 
 
-        val reference = FirebaseDatabase.getInstance().getReference("Drivers")
+        val reference = FirebaseDatabase.getInstance().getReference("Users")
 
         reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {

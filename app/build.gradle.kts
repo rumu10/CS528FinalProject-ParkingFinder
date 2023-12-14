@@ -67,6 +67,8 @@ dependencies {
     implementation("com.google.code.gson:gson:2.8.6")
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.fragment:fragment:1.6.1")
 
     //Geo
     implementation("com.google.android.gms:play-services-maps:18.0.0")
@@ -75,5 +77,6 @@ dependencies {
     implementation ("com.google.maps.android:android-maps-utils:2.2.5") // For decoding polylines
     implementation("com.google.android.libraries.places:places:3.2.0")
     implementation("androidx.work:work-runtime-ktx:2.7.1")
+
 
 }

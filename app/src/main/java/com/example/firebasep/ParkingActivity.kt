@@ -4,10 +4,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.firebasep.databinding.ActivityParkingBinding
+import android.util.Log
 
 class ParkingActivity : AppCompatActivity() {
     // Declare binding as a lateinit var, which means it will be initialized later
     private lateinit var binding: ActivityParkingBinding
+    private var userEmail: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,6 +17,8 @@ class ParkingActivity : AppCompatActivity() {
         // Inflate the layout for ParkingActivity
         binding = ActivityParkingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        userEmail = intent.getStringExtra("USER_EMAIL")
+        Log.d("ParkingActivity", "Call from PA Received User Email: $userEmail")
 
         // Initialize with a default fragment, such as a home fragment
         replaceFragment(ParkingFragment())
@@ -26,7 +30,7 @@ class ParkingActivity : AppCompatActivity() {
                 when (item.itemId) {
                     R.id.myparking -> replaceFragment(ParkingFragment())
                     R.id.home -> replaceFragment(HomeFragment())
-                    R.id.subscriptions -> replaceFragment(UserProfileFragment())
+                    R.id.subscriptions -> replaceFragmentWithUserEmail()
                     R.id.more -> replaceFragment(MoreFragment())
                 }
                 true
@@ -35,9 +39,17 @@ class ParkingActivity : AppCompatActivity() {
     }
 
     private fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.frame_layout, fragment)
-            commit()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.frame_layout, fragment)
+            .commit()
+    }
+
+    private fun replaceFragmentWithUserEmail() {
+        val userProfileFragment = UserProfileFragment().apply {
+            arguments = Bundle().apply {
+                putString("USER_EMAIL", userEmail)
+            }
         }
+        replaceFragment(userProfileFragment)
     }
 }

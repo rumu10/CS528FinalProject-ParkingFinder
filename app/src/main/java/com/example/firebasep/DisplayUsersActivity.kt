@@ -35,8 +35,8 @@ class DisplayUsersActivity : AppCompatActivity() {
     }
 
     private fun fetchDataFromFirebase() {
-        Log.e("INsidee Fetch data", "Inside FtechData")
-        val databaseReference = FirebaseDatabase.getInstance().getReference("Drivers")
+       // Log.e("INsidee Fetch data", "Inside FtechData")
+        val databaseReference = FirebaseDatabase.getInstance().getReference("Users")
 
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -50,18 +50,25 @@ class DisplayUsersActivity : AppCompatActivity() {
 
                 userList.clear()
                 for (userSnapshot in dataSnapshot.children) {
-                    val uId = userSnapshot.child("uid").getValue(String::class.java) ?: ""
-                    val uName = userSnapshot.child("uname").getValue(String::class.java) ?: ""
-                    val uEmail = userSnapshot.child("uemail").getValue(String::class.java) ?: ""
-                    val uPass = userSnapshot.child("upass").getValue(String::class.java) ?: ""
-                    Log.d("FirebaseData", "Snapshot Key: ${userSnapshot.key}, Value: ${userSnapshot.value}")
+                    val EV = userSnapshot.child("ev").getValue(Boolean::class.java) ?: false
+                    val Name = userSnapshot.child("uname").getValue(String::class.java) ?: ""
+                    val Email = userSnapshot.child("uemail").getValue(String::class.java) ?: ""
+                    val Pass = userSnapshot.child("upass").getValue(String::class.java) ?: ""
+                    val CarColor = userSnapshot.child("carColor").getValue(String::class.java) ?: ""
+                    val CarModel = userSnapshot.child("carModel").getValue(String::class.java) ?: ""
+                    val CarPlate = userSnapshot.child("carPlate").getValue(String::class.java) ?: ""
+                    val CarYear = userSnapshot.child("carYear").getValue(String::class.java) ?: ""
+                    val Nickname = userSnapshot.child("upass").getValue(String::class.java) ?: ""
+                    val Phone = userSnapshot.child("carColor").getValue(String::class.java) ?: ""
+                    val Handicapped = userSnapshot.child("handicapped").getValue(Boolean::class.java) ?: false
+                     // Log.d("FirebaseData", "Snapshot Key: ${userSnapshot.key}, Value: ${userSnapshot.value}")
 
-                    val user = UserModel(uId, uName, uEmail, uPass)
+                    val user = UserModel( EV , Name, Email, Pass , CarColor , CarModel ,CarPlate , CarYear , Nickname , Phone  , Handicapped )
                     userList.add(user)
-                    Log.d("UserModelData", "Created UserModel - ID: $uId, Name: $uName, Email: $uEmail, Password: $uPass")
+                 //   Log.d("UserModelData", "Created UserModel - ID: $uEV, Name: $uName, Email: $uEmail, Password: $uPass")
 
 
-                    Log.e("Now read the data in fun ...", "Reading22 Data from ")
+                  //  Log.e("Now read the data in fun ...", "Reading22 Data from ")
                 }
                 userAdapter.notifyDataSetChanged()
             }

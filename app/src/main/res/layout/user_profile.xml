@@ -22,137 +22,6 @@
 <!--        app:layout_constraintVertical_bias="0.585"-->
 <!--        android:contentDescription="@string/change_password"/>-->
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Accessibility: "
-        android:textColor="#000"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.174"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.687" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Vehicle Number: "
-        android:textColor="#000"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.198"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.617" />
-
-    <EditText
-        android:id="@+id/editTextPhone2"
-        android:layout_width="167dp"
-        android:layout_height="44dp"
-        android:ems="10"
-        android:inputType="phone"
-        android:text="Vehicle Number"
-        android:textColor="#000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.934"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.621"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Vehicle Name: "
-        android:textColor="#000"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.198"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.535" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Phone Number: "
-        android:textColor="#000"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.198"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.464" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email: "
-        android:textColor="#000"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.159"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.404" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name:"
-        android:textColor="#000"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.158"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.331" />
-
-    <EditText
-        android:id="@+id/editTextText2"
-        android:layout_width="177dp"
-        android:layout_height="45dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Vehicle Type"
-        android:textColor="#000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.897"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.539"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <EditText
-        android:id="@+id/editTextPhone"
-        android:layout_width="167dp"
-        android:layout_height="44dp"
-        android:ems="10"
-        android:inputType="phone"
-        android:text="Phone Number"
-        android:textColor="#000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.86"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.464"
-        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/textView2"
@@ -181,37 +50,8 @@
 <!--        app:srcCompat="@drawable/ic_edit_profile"-->
 <!--        android:contentDescription="@string/edit_profile"/>-->
 
-    <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="177dp"
-        android:layout_height="45dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="mmm"
-        android:textColor="#000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.572"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.313"
-        tools:ignore="TouchTargetSizeCheck" />
 
-    <EditText
-        android:id="@+id/editTextTextEmailAddress2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:text="mmm@wpi.edu"
-        android:textColor="#000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.389"
-        tools:ignore="TouchTargetSizeCheck" />
+
 
     <TextView
         android:id="@+id/textView3"
@@ -237,6 +77,190 @@
         app:layout_constraintVertical_bias="0.14"
         app:srcCompat="@drawable/img" />
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name:"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView2"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="177dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Enter Name"
+        android:textColor="#000"
+        app:layout_constraintStart_toEndOf="@id/textView4"
+        app:layout_constraintTop_toTopOf="@id/textView4" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email: "
+        android:layout_marginStart="16dp"
+        android:textColor="#000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextName"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="177dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:hint="Enter Email"
+        android:textColor="#000"
+        app:layout_constraintStart_toEndOf="@id/textView6"
+        app:layout_constraintTop_toTopOf="@id/textView6" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone Number: "
+        android:layout_marginStart="16dp"
+        android:textColor="#000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextEmail"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <EditText
+        android:id="@+id/editTextPhone"
+        android:layout_width="177dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="phone"
+        android:hint="Enter Phone Number"
+        android:textColor="#000"
+        app:layout_constraintStart_toEndOf="@id/textView7"
+        app:layout_constraintTop_toTopOf="@id/textView7" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vehicle Model: "
+        android:layout_marginStart="16dp"
+        android:textColor="#000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextPhone"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <EditText
+        android:id="@+id/editTextVehicleName"
+        android:layout_width="177dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Enter Vehicle Model"
+        android:textColor="#000"
+        app:layout_constraintStart_toEndOf="@id/textView8"
+        app:layout_constraintTop_toTopOf="@id/textView8" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vehicle Plate: "
+        android:layout_marginStart="16dp"
+        android:textColor="#000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextVehicleName"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <EditText
+        android:id="@+id/editTextVehicleNumber"
+        android:layout_width="177dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Enter Vehicle Plate"
+        android:textColor="#000"
+        app:layout_constraintStart_toEndOf="@id/textView9"
+        app:layout_constraintTop_toTopOf="@id/textView9" />
+
+    <TextView
+        android:id="@+id/textViewVehicleModel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vehicle Model: "
+        android:layout_marginStart="16dp"
+        android:textColor="#000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextVehicleNumber"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <EditText
+        android:id="@+id/editTextVehicleModel"
+        android:layout_width="177dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Enter Vehicle Model"
+        android:textColor="#000"
+        app:layout_constraintStart_toEndOf="@id/textViewVehicleModel"
+        app:layout_constraintTop_toTopOf="@id/textViewVehicleModel" />
+
+    <TextView
+        android:id="@+id/textViewVehicleColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vehicle Color: "
+        android:layout_marginStart="16dp"
+        android:textColor="#000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextVehicleModel"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <EditText
+        android:id="@+id/editTextVehicleColor"
+        android:layout_width="177dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Enter Vehicle Color"
+        android:textColor="#000"
+        app:layout_constraintStart_toEndOf="@id/textViewVehicleColor"
+        app:layout_constraintTop_toTopOf="@id/textViewVehicleColor" />
+
+    <TextView
+        android:id="@+id/textViewVehicleYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vehicle Year: "
+        android:layout_marginStart="16dp"
+        android:textColor="#000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextVehicleColor"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <EditText
+        android:id="@+id/editTextVehicleYear"
+        android:layout_width="177dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="Enter Vehicle Year"
+        android:textColor="#000"
+        app:layout_constraintStart_toEndOf="@id/textViewVehicleYear"
+        app:layout_constraintTop_toTopOf="@id/textViewVehicleYear" />
+
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
@@ -244,9 +268,12 @@
         android:text="Log out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.161"
         app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="24dp"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewVehicleYear"
+        app:layout_constraintHorizontal_bias="0.03"
+        android:layout_marginTop="30dp"
         app:layout_constraintVertical_bias="0.83" />
 
     <!--    <Button-->
