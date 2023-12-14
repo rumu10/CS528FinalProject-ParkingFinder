@@ -26,21 +26,21 @@
         android:id="@+id/btnParking2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Parking2"
+        android:text="West Parking Lot"
         android:layout_marginTop="20dp"/>
 
     <Button
         android:id="@+id/btnParking3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Parking3"
+        android:text="Hackfeld Parking Lot"
         android:layout_marginTop="20dp"/>
 
     <Button
         android:id="@+id/btnParking4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Parking4"
+        android:text="Rec Center Parking Lot"
         android:layout_marginTop="20dp"/>
 
 </LinearLayout>

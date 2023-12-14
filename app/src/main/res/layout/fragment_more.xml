@@ -7,7 +7,7 @@
         android:gravity="center"
         android:padding="16dp">
 
-        <!-- Use a LinearLayout to stack TextViews vertically -->
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="0dp"
@@ -34,14 +34,12 @@
                 android:id="@+id/textViewStudentInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="cursive"
-
-                android:text="Reza SaadatiFard,\n Maryam Ataei, \n  Sudipta Biswas, \n Anushka Bangal, \n Mehrnoush Alizade"
+                android:fontFamily="serif"
+                android:text="Reza SaadatiFard, rsaadatifard@wpi.edu\nMaryam Ataei, mataei@wpi.edu\nSudipta Biswas, sbiswas@wpi.edu\nAnushka Bangal, aBangal@wpi.edu\nMehrnoush Alizade, malizade@wpi.edu"
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 android:gravity="center"
-                android:textStyle="bold"
-                 />
+                android:textStyle="bold"/>
 
 
 

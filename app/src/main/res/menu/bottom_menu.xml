@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+
+    <item
+        android:id="@+id/subscriptions"
+        android:title="Profile"
+        android:icon="@drawable/ic_baseline_account_24"/>
     <item
         android:id="@+id/home"
-        android:title="Home"
+        android:title="History"
         android:icon="@drawable/home"/>
-
-    <item
-        android:id="@+id/myparking"
-        android:title="My Parking"
-        android:icon="@drawable/ic_baseline_myparking"/>
-
     <item
         android:id="@+id/search"
         android:title=""
@@ -18,13 +17,17 @@
         android:icon="@drawable/ic_baseline_search_24"/>
 
     <item
-        android:id="@+id/subscriptions"
-        android:title="Account"
-        android:icon="@drawable/ic_baseline_account_24"/>
+        android:id="@+id/myparking"
+        android:title="Parkings"
+        android:icon="@drawable/ic_baseline_myparking"/>
+
+
+
+
 
     <item
         android:id="@+id/more"
-        android:title="More"
+        android:title="About Us"
         android:icon="@drawable/more"/>
 
 </menu>

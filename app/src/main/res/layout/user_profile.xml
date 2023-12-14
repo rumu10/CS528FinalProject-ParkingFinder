@@ -89,7 +89,7 @@
         app:layout_constraintTop_toBottomOf="@id/textView2"
         app:layout_constraintVertical_bias="0.05" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextName"
         android:layout_width="177dp"
         android:layout_height="45dp"
@@ -112,7 +112,7 @@
         app:layout_constraintTop_toBottomOf="@id/editTextName"
         app:layout_constraintVertical_bias="0.05" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextEmail"
         android:layout_width="177dp"
         android:layout_height="45dp"
@@ -135,7 +135,7 @@
         app:layout_constraintTop_toBottomOf="@id/editTextEmail"
         app:layout_constraintVertical_bias="0.05" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextPhone"
         android:layout_width="177dp"
         android:layout_height="45dp"
@@ -158,7 +158,7 @@
         app:layout_constraintTop_toBottomOf="@id/editTextPhone"
         app:layout_constraintVertical_bias="0.05" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextVehicleName"
         android:layout_width="177dp"
         android:layout_height="45dp"
@@ -181,7 +181,7 @@
         app:layout_constraintTop_toBottomOf="@id/editTextVehicleName"
         app:layout_constraintVertical_bias="0.05" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextVehicleNumber"
         android:layout_width="177dp"
         android:layout_height="45dp"
@@ -204,7 +204,7 @@
         app:layout_constraintTop_toBottomOf="@id/editTextVehicleNumber"
         app:layout_constraintVertical_bias="0.05" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextVehicleModel"
         android:layout_width="177dp"
         android:layout_height="45dp"
@@ -227,7 +227,7 @@
         app:layout_constraintTop_toBottomOf="@id/editTextVehicleModel"
         app:layout_constraintVertical_bias="0.05" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextVehicleColor"
         android:layout_width="177dp"
         android:layout_height="45dp"
@@ -250,7 +250,7 @@
         app:layout_constraintTop_toBottomOf="@id/editTextVehicleColor"
         app:layout_constraintVertical_bias="0.05" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextVehicleYear"
         android:layout_width="177dp"
         android:layout_height="45dp"

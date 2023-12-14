@@ -11,20 +11,21 @@ import android.util.Log
 import android.content.Intent
 import com.example.firebasep.MainActivity
 import android.widget.Button
+import android.widget.TextView
 
 class UserProfileFragment : Fragment() {
 
     private lateinit var databaseReference: DatabaseReference
 
 
-    private lateinit var editTextName: EditText
-    private lateinit var editTextEmail: EditText
-    private lateinit var editTextPhone: EditText
-    private lateinit var editTextVehicleName: EditText
-    private lateinit var editTextVehicleNumber: EditText
-    private lateinit var editTextVehicleModel: EditText
-    private lateinit var editTextVehicleColor: EditText
-    private lateinit var editTextVehicleYear: EditText
+    private lateinit var editTextName: TextView
+    private lateinit var editTextEmail: TextView
+    private lateinit var editTextPhone: TextView
+    private lateinit var editTextVehicleName: TextView
+    private lateinit var editTextVehicleNumber: TextView
+    private lateinit var editTextVehicleModel: TextView
+    private lateinit var editTextVehicleColor: TextView
+    private lateinit var editTextVehicleYear: TextView
     private lateinit var logoutButton: Button
 
     override fun onCreateView(

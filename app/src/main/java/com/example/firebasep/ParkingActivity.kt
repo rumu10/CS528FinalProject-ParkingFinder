@@ -7,30 +7,30 @@ import com.example.firebasep.databinding.ActivityParkingBinding
 import android.util.Log
 
 class ParkingActivity : AppCompatActivity() {
-    // Declare binding as a lateinit var, which means it will be initialized later
+
     private lateinit var binding: ActivityParkingBinding
     private var userEmail: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Inflate the layout for ParkingActivity
+
         binding = ActivityParkingBinding.inflate(layoutInflater)
         setContentView(binding.root)
         userEmail = intent.getStringExtra("USER_EMAIL")
         Log.d("ParkingActivity", "Call from PA Received User Email: $userEmail")
 
-        // Initialize with a default fragment, such as a home fragment
+
         replaceFragment(ParkingFragment())
 
-        // Assuming you have a BottomNavigationView in your parking app as well
+
         binding.bottomNavigationView.apply {
             setBackground(null)
             setOnItemSelectedListener { item ->
                 when (item.itemId) {
-                    R.id.myparking -> replaceFragment(ParkingFragment())
-                    R.id.home -> replaceFragment(HomeFragment())
                     R.id.subscriptions -> replaceFragmentWithUserEmail()
+                    R.id.home -> replaceFragment(HomeFragment())
+                    R.id.myparking -> replaceFragment(ParkingFragment())
                     R.id.more -> replaceFragment(MoreFragment())
                 }
                 true

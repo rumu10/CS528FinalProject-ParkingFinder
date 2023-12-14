@@ -96,6 +96,9 @@ class GeofenceBroadcastReceiver : BroadcastReceiver() {
                 for (ParkingSnapshot in dataSnapshot.children) {
                     if(ParkingSnapshot.key == "Total") {
                         val numberValue = (ParkingSnapshot.value as? Map<*, *>)?.get("number") as? Long
+                        Log.d("FirebaseConnection", "total: $numberValue ")
+                        Log.d("MainActivity", "FRom MainActy sending User_Email: $numberValue")
+
                         numOfParking = numberValue?.toInt() ?: 0
 
                     }
