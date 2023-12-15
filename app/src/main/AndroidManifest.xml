@@ -64,6 +64,9 @@
             android:name=".UserAdapter"
             android:exported="true"></activity>
         <activity
+            android:name=".HistoryGrapgh"
+            android:exported="true"></activity>
+        <activity
             android:name=".CreateActivity"
             android:exported="true">
 

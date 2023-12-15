@@ -1,10 +1,13 @@
 package com.example.firebasep
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.firebasep.databinding.ActivityParkingBinding
 import android.util.Log
+import androidx.core.content.ContentProviderCompat.requireContext
 
 class ParkingActivity : AppCompatActivity() {
 
@@ -29,13 +32,18 @@ class ParkingActivity : AppCompatActivity() {
             setOnItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.subscriptions -> replaceFragmentWithUserEmail()
-                    R.id.home -> replaceFragment(HomeFragment())
+                    R.id.home -> startMyActivity(this.context)
                     R.id.myparking -> replaceFragment(ParkingFragment())
                     R.id.more -> replaceFragment(MoreFragment())
                 }
                 true
             }
         }
+    }
+
+    private fun startMyActivity(context: Context) {
+        val intent = Intent(context, HistoryGrapgh::class.java)
+        context.startActivity(intent)
     }
 
     private fun replaceFragment(fragment: Fragment) {

@@ -50,69 +50,72 @@ class GeofenceBroadcastReceiver : BroadcastReceiver() {
         val geofenceList: List<Geofence> = geofencingEvent?.triggeringGeofences ?: return
 
         if (geofencingEvent.geofenceTransition == Geofence.GEOFENCE_TRANSITION_ENTER) {
-            fetchDataFromFirebase(object : OnParkingDataCallback {
-                override fun onParkingDataReceived(numOfParking: Int) {
-                    val notificationManager = context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            Toast.makeText(context?.applicationContext, "Enter Geofence", Toast.LENGTH_SHORT).show()
 
-                    val notificationIntent = Intent(context, MainActivity::class.java)
-                    val pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+            val numOfParking = fetchDataFromFirebase()
 
-                    val notification = NotificationCompat.Builder(context, channelId)
-                        .setSmallIcon(R.drawable.ic_launcher_background)
-                        .setContentTitle("Geofence Alert")
-                        .setContentText("You're around the WPI and $numOfParking parkings are available in UnityHall parking")
-                        .setContentIntent(pendingIntent)
-                        .setAutoCancel(true)
-                        .setOngoing(true) // Set the notification as ongoing
-                        .build()
+            val notificationManager = context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-                    // Create a notification channel for API 26+
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        val notificationChannel = NotificationChannel(channelId, description, NotificationManager.IMPORTANCE_HIGH)
-                        notificationChannel.enableLights(true)
-                        notificationChannel.lightColor = Color.GREEN
-                        notificationChannel.enableVibration(false)
-                        notificationManager.createNotificationChannel(notificationChannel)
-                    }
+            val notificationIntent = Intent(context, MainActivity::class.java)
+            val pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT)
 
-                    notificationManager.notify(1234, notification)
-                }
-            })
+            val notification = NotificationCompat.Builder(context, channelId)
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setContentTitle("Geofence Alert")
+                .setContentText("You're around the WPI and ${numOfParking} parkings are available in UnityHall parking")
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true)
+                .setOngoing(true) // Set the notification as ongoing
+                .build()
+
+            // Create a notification channel for API 26+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                val notificationChannel = NotificationChannel(channelId, description, NotificationManager.IMPORTANCE_HIGH)
+                notificationChannel.enableLights(true)
+                notificationChannel.lightColor = Color.GREEN
+                notificationChannel.enableVibration(false)
+                notificationManager.createNotificationChannel(notificationChannel)
+            }
+
+            notificationManager.notify(1234, notification)
         }
     }
 
-    interface OnParkingDataCallback {
-        fun onParkingDataReceived(numOfParking: Int)
-    }
-
-    fun fetchDataFromFirebase(callback: OnParkingDataCallback) {
+    private fun fetchDataFromFirebase(): Int {
+        Log.e("INsidee Fetch data", "Inside FtechData")
         val databaseReference = FirebaseDatabase.getInstance().getReference("parkingSlotUnity")
+        var numOfParking: Int = 0
 
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (!dataSnapshot.exists()) {
-                    callback.onParkingDataReceived(0)
+                    Log.e("FirebaseConnection", "No data found in the database.")
                     return
                 }
 
-                var numOfParking = 0
-
                 for (ParkingSnapshot in dataSnapshot.children) {
-                    if (ParkingSnapshot.key == "Total") {
+                    if(ParkingSnapshot.key == "Total") {
                         val numberValue = (ParkingSnapshot.value as? Map<*, *>)?.get("number") as? Long
+                        Log.d("FirebaseConnection", "total: $numberValue ")
+                        Log.d("MainActivity", "FRom MainActy sending User_Email: $numberValue")
+
                         numOfParking = numberValue?.toInt() ?: 0
+
                     }
+
                 }
 
-                callback.onParkingDataReceived(numOfParking)
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                callback.onParkingDataReceived(0)
                 Log.e("geofence", "Database error", databaseError.toException())
             }
         })
+
+        return numOfParking
     }
+
+
 }
 
 

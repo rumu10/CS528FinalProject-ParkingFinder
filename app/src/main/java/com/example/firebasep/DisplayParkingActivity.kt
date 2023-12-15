@@ -29,12 +29,15 @@ class DisplayParkingActivity : AppCompatActivity() {
         ParkingAdapter = ParkingAdapter(parkingList)
         recyclerView.adapter = ParkingAdapter
 
-        fetchDataFromFirebase()
+        var numOfParking = fetchDataFromFirebase()
+        Log.d("Checkingggggg", numOfParking.toString())
+        //fetchDataFromFirebase()
 
     }
-    private fun fetchDataFromFirebase() {
+    private fun fetchDataFromFirebase(): Int {
         Log.e("INsidee Fetch data", "Inside FtechData")
         val databaseReference = FirebaseDatabase.getInstance().getReference("parkingSlotUnity")
+        var numOfParking: Int = 0
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 Log.e("DataSnapSHOTTT", "Reading Data from ")
@@ -52,6 +55,11 @@ class DisplayParkingActivity : AppCompatActivity() {
                 for (ParkingSnapshot in dataSnapshot.children) {
                     if(ParkingSnapshot.key == "Total") {
                         Log.d("checkingggg", "Snapshot Key: ${ParkingSnapshot.key}, Value: ${ParkingSnapshot.value}")
+                        val numberValue = (ParkingSnapshot.value as? Map<*, *>)?.get("number") as? Long
+                         numOfParking = numberValue?.toInt() ?: 0
+
+                        Log.d("FirebaseData", "Number of Parking: $numOfParking")
+
 
                     } else {
                         val PID = ParkingSnapshot.key ?: "" // Get the key (PID)
@@ -88,7 +96,7 @@ class DisplayParkingActivity : AppCompatActivity() {
 //                            rowSpec = GridLayout.spec(currentRow)
                             width = 230 // You can replace this with the desired width
                             height = 100 // You can replace this with the desired height
-                            setMargins(25, 1, 8, 8)
+                            setMargins(25, 0, 0, 0)
 //
                         }
 
@@ -97,7 +105,7 @@ class DisplayParkingActivity : AppCompatActivity() {
                         val backgroundDrawable = when {
                             parking.status == 1 && parking.handicapped == 1 -> R.drawable.ic_handicap
                             parking.status == 1 && parking.EV == 1 -> R.drawable.ev1
-                            parking.status == 1 -> R.drawable.more
+                            parking.status == 1 -> R.drawable.available
                             else -> R.drawable.car_image
                         }
                         // Set background image based on availability
@@ -155,6 +163,7 @@ class DisplayParkingActivity : AppCompatActivity() {
             }
         })
 
+        return numOfParking
     }
 }
 
