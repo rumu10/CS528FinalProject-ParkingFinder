@@ -11,49 +11,7 @@ import androidx.fragment.app.Fragment
 
 class HistoryFragment : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        // Find the Spinner in the layout
-       val spinner: Spinner = view.findViewById(R.id.spinner)
-//            val options = resources.getStringArray(R.array.dropdown_items)
-
-        // Create an ArrayAdapter using the string array from resources
-        ArrayAdapter.createFromResource(
-            requireContext(),
-            R.array.dropdown_items,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
-            spinner.adapter = adapter
-        }
-
-        // Set a listener for item selections
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                // Handle the selected item
-                val selectedItem = parent?.getItemAtPosition(position).toString()
-                // Do something with the selected item
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                // Do nothing here
-            }
-        }
-
-        return view
-    }
 }
 
 
