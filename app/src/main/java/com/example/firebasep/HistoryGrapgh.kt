@@ -18,7 +18,7 @@ class HistoryGrapgh : AppCompatActivity() {
         val imageView2: ImageView = findViewById(R.id.imageView2)
         val imageView3: ImageView = findViewById(R.id.imageView3)
 
-        val options = arrayOf("Option 1", "Option 2")
+        val options = arrayOf("Last Day", "Last Month")
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, options)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
