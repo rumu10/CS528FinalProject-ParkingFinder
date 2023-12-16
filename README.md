@@ -42,3 +42,5 @@ To set up the application on your local system, follow these steps:
   + Initializes Places API and sets up the map.
   + Marks locations, retrieves user location, and draws route polylines.
   + Manages permissions for location services and geofence additions based on user interactions.
+### About US Files Detail
+- `MoreFragment Fragment`To learn more about our team members, navigate to the 'About Us' section within the application. Here, you'll find detailed information about each team member.
