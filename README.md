@@ -24,7 +24,7 @@ Before running the application, ensure you have the following installed:
 
 To set up the application on your local system, follow these steps:
 ### Android (User-side)
-    Clone the repository to your local machine:
++ Clone the repository to your local machine:
     
       `git clone https://github.com/your-username/wpi-parking-finder.git`
 ### Python (Server-side)
