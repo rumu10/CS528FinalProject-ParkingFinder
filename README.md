@@ -34,4 +34,5 @@ To set up the application on your local system, follow these steps:
 
 ### Geofencing Files Detail
 - `GeofenceBroadcastReceiver` manages geofence triggers, fetches parking data from Firebase upon entry to a specific area, and notifies users about available parking spaces nearby through notifications.
+- 
 
