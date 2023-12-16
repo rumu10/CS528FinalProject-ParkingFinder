@@ -34,5 +34,6 @@ To set up the application on your local system, follow these steps:
 
 ### Geofencing Files Detail
 - `GeofenceBroadcastReceiver` manages geofence triggers, fetches parking data from Firebase upon entry to a specific area, and notifies users about available parking spaces nearby through notifications.
+- `GeofenceHelper` class aids in setting up geofencing functionalities. It constructs geofencing requests, defines geofences based on location and parameters, creates a pending intent for geofence events.
+- `GeofenceService ` is a background Service managing geofencing operations. It sets up geofences based on specified parameters, requests location permissions if needed, and adds geofences using the GeofencingClient.
 - 
-
