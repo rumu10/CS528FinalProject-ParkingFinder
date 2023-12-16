@@ -28,6 +28,7 @@ To set up the application on your local system, follow these steps:
     
       git clone https://github.com/your-username/wpi-parking-finder.git
 ### Python (Server-side)
+for server-side video processing, you need to install openCV2, python 3.10, and ultralytics packages. 
 
 ## File Summaries
 
@@ -46,3 +47,10 @@ To set up the application on your local system, follow these steps:
 - `UserProfileFragment Fragment`To learn more about our team members, navigate to the 'About Us' section within the application. Here, you'll find detailed information about each team member.
 ### About US File Detail
 - `MoreFragment Fragment`Explore personalized features by accessing the 'Profile' menu. Here, users can view their profile information which includes personal and car details.
+
+### Server-side files (python)
+-mainSlotFinder: This Python script serves as the server-side component of our Mobile Project. Its primary function involves detecting parking slots and updating a connected database with the results obtained. If a camera isn't accessible, the provided video file (unity_test.mov) is available for testing purposes. The core functionality revolves around utilizing various yolov8 models designed explicitly for detecting cars within the parking lot. To run the application, execute this code, ensuring the necessary dependencies are installed and the required video source is available for processing.
+
+-parkingSlotRect.py: This code facilitates the extraction of parking slot areas from a video source. It prompts the user to select four points for each parking slot by interacting with the video interface. Upon selection, the coordinates of these points are displayed in the command window. These coordinates are subsequently used in the main code to define parking slots (e.g., areaB1). Once all desired parking lots have been defined by selecting four points for each rectangular region, the user can exit the program by pressing the 'q' key, finalizing the selection process.
+
+-dbManager.py: this file is used to manage the database and creating the table in firebase for parking slots
