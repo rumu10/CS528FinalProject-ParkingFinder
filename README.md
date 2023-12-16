@@ -17,7 +17,7 @@ The Smart Parking Finder Application is designed to help students and staff at W
 Before running the application, ensure you have the following installed:
 - Python 3.8 or higher
 - For proper access to Firebase a working internet connection is needed
-- Camera should be set up
+- Camera should be set up ... 
 
 
 ## Installation
@@ -26,7 +26,7 @@ To set up the application on your local system, follow these steps:
 
 1. Clone the repository to your local machine:
    ```sh
-   git clone https://github.com/your-username/wpi-parking-finder.git
+   git clone https://github.com/rumu10/CS528FinalProject-ParkingFinder
 
 2.
 
