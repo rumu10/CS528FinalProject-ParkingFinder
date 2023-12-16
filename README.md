@@ -31,7 +31,7 @@ To set up the application on your local system, follow these steps:
 
 ## File Summaries
 
-### History Files Detail
+### History File Detail
 - `HistoryGraph Class`  provides a detailed overview of past parking availability trends, allowing users to visualize data and plan parking decisions effectively. The information includes hourly parking space counts, offering valuable insights into the patterns of parking availability over time.
 
 ### Geofencing Files Detail(inside Geofence directory)
@@ -42,5 +42,7 @@ To set up the application on your local system, follow these steps:
   + Initializes Places API and sets up the map.
   + Marks locations, retrieves user location, and draws route polylines.
   + Manages permissions for location services and geofence additions based on user interactions.
-### About US Files Detail
-- `MoreFragment Fragment`To learn more about our team members, navigate to the 'About Us' section within the application. Here, you'll find detailed information about each team member.
+### Profile File Detail
+- `UserProfileFragment Fragment`To learn more about our team members, navigate to the 'About Us' section within the application. Here, you'll find detailed information about each team member.
+### About US File Detail
+- `MoreFragment Fragment`Explore personalized features by accessing the 'Profile' menu. Here, users can view their profile information which includes personal and car details.
