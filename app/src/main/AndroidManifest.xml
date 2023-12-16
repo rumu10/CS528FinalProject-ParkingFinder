@@ -63,11 +63,16 @@
         <activity
             android:name=".UserAdapter"
             android:exported="true"></activity>
-        <activity
-            android:name=".HistoryGrapgh"
-            android:exported="true"></activity>
+
         <activity
             android:name=".CreateActivity"
+            android:exported="true">
+
+            <!-- If this Activity requires to handle certain intents, you can define them here -->
+        </activity>
+
+        <activity
+            android:name=".HistoryGrapgh"
             android:exported="true">
 
             <!-- If this Activity requires to handle certain intents, you can define them here -->
